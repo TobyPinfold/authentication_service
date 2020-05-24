@@ -1,4 +1,4 @@
-package dev.tobypifold.authenticationservice
+package dev.tobypinfold.authenticationservice
 
 import akka.actor.typed.ActorSystem
 import akka.actor.typed.scaladsl.adapter._

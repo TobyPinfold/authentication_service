@@ -1,15 +1,7 @@
-package dev.tobypifold.authenticationservice
+package dev.tobypinfold.authenticationservice
 
-import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.model.StatusCodes
-import akka.http.scaladsl.server.Route
-
-import scala.concurrent.Future
-import dev.tobypifold.authenticationservice.UserRegistry._
-import akka.actor.typed.ActorRef
-import akka.actor.typed.ActorSystem
-import akka.actor.typed.scaladsl.AskPattern._
-import akka.util.Timeout
+import UserRegistry._
+import dev.tobypinfold.authenticationservice.UserRegistry.{ActionPerformed, GetUserResponse, GetUsers}
 
 //#import-json-formats
 //#user-routes-class

@@ -1,6 +1,6 @@
-package dev.tobypifold.authenticationservice
+package dev.tobypinfold.authenticationservice
 
-import dev.tobypifold.authenticationservice.UserRegistry.ActionPerformed
+import UserRegistry.ActionPerformed
 
 //#json-formats
 import spray.json.DefaultJsonProtocol

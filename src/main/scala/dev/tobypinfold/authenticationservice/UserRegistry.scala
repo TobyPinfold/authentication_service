@@ -1,4 +1,4 @@
-package dev.tobypifold.authenticationservice
+package dev.tobypinfold.authenticationservice
 
 //#user-registry-actor
 import akka.actor.typed.ActorRef

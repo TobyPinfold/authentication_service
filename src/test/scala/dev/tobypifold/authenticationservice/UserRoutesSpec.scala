@@ -2,13 +2,9 @@ package dev.tobypifold.authenticationservice
 
 //#user-routes-spec
 //#test-top
-import akka.actor.testkit.typed.scaladsl.ActorTestKit
-import akka.http.scaladsl.marshalling.Marshal
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.testkit.ScalatestRouteTest
+import dev.tobypinfold.authenticationservice.{User, UserRegistry, UserRoutes}
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{ Matchers, WordSpec }
-import akka.actor.typed.scaladsl.adapter._
+import org.scalatest.{Matchers, WordSpec}
 
 //#set-up
 class UserRoutesSpec extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
@@ -30,7 +26,7 @@ class UserRoutesSpec extends WordSpec with Matchers with ScalaFutures with Scala
 
   // use the json formats to marshal and unmarshall objects in the test
   import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
-  import JsonFormats._
+  import dev.tobypinfold.authenticationservice.JsonFormats._
   //#set-up
 
   //#actual-test

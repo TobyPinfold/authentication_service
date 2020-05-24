@@ -17,8 +17,8 @@ object AuthenticationService {
   private def startServer(): Future[Http.ServerBinding] = {
 
     val routes =
-      path("hello") {
-        get {
+      path("/authenticate") {
+        post {
           complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
         }
       }

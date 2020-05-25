@@ -2,14 +2,14 @@ package dev.tobypinfold.authenticationservice
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
-
 import scala.concurrent.{ExecutionContextExecutor, Future}
 import akka.http.scaladsl.server.Directives._
+import dev.tobypinfold.authenticationservice.Configuration
+import dev.tobypinfold.authenticationservice.routes.{AuthenticationRoute, AuthorizationRoute}
 
 import scala.io.StdIn
 
-object AuthenticationService {
+object Authenticator {
 
   implicit val system: ActorSystem = ActorSystem("authentication-service")
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
@@ -17,20 +17,18 @@ object AuthenticationService {
   private def startServer(): Future[Http.ServerBinding] = {
 
     val routes =
-      path("/authenticate") {
-        post {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
-        }
-      }
+      AuthenticationRoute.routes ~
+      AuthorizationRoute.routes
 
-    Http().bindAndHandle(routes, "localhost", 8080)
+    Http().bindAndHandle(routes, Configuration.config.http.address, Configuration.config.http.port)
   }
 
   def main(args: Array[String]) {
 
+    val address = s"http://${Configuration.config.http.address}:${Configuration.config.http.port}/"
     val bindingFuture: Future[Http.ServerBinding] = startServer()
 
-    println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
+    println(s"Server online at ${address}\nPress RETURN to stop...")
     StdIn.readLine() // let it run until user presses return
     bindingFuture
       .flatMap(_.unbind()) // trigger unbinding from the port

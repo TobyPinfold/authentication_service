@@ -6,7 +6,6 @@ import dev.tobypinfold.authenticationservice.models.utils.JwtToken
 import scala.concurrent.Future
 
 trait UserDao {
-
   def createUser() : Future[User]
 
   def createToken(user: User) : Future[JwtToken]
@@ -16,5 +15,4 @@ trait UserDao {
   def deleteToken(user: User) : Future[Boolean]
 
   def deleteUser(user: User) : Future[Boolean]
-
 }

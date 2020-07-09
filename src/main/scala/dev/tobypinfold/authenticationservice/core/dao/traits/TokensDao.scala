@@ -6,6 +6,6 @@ import scala.concurrent.Future
 
 trait TokensDao {
 
-  def createToken(userId: String): Future[JwtToken]
+  def createToken(userId: Long): Future[JwtToken]
 
 }

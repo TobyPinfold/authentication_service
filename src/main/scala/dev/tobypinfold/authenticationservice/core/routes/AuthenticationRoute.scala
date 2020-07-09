@@ -1,5 +1,6 @@
 package dev.tobypinfold.authenticationservice.core.routes
 
+import akka.http.scaladsl.model.Uri.Path
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import dev.tobypinfold.authenticationservice.core.models.user.UserPass
@@ -13,11 +14,20 @@ class AuthenticationRoute(authenticationService: AuthenticationService)(implicit
     path("authenticate") {
       post {
         entity(as[UserPass]) {
-          userPass =>
-            complete {
-              authenticationService.authenticate(userPass).map(x => x.toJson.compactPrint)
-            }
+          userPass => complete {
+              authenticationService.authenticate(userPass).map(token => token.toJson.prettyPrint)
+          }
+        }
+      }
+    } ~
+    path("register") {
+      post {
+        entity(as[UserPass]) {
+          userPass => complete {
+            authenticationService.createUser(userPass)
+          }
         }
       }
     }
+
 }

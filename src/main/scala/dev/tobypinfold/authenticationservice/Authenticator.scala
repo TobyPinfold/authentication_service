@@ -11,6 +11,7 @@ import dev.tobypinfold.authenticationservice.core.routes.{AuthenticationRoute, A
 import dev.tobypinfold.authenticationservice.core.services.{AuthenticationService, AuthorizationService}
 import dev.tobypinfold.authenticationservice.datasources.MysqlDB
 import dev.tobypinfold.authenticationservice.Configuration
+import org.mindrot.jbcrypt.BCrypt
 
 import scala.io.StdIn
 

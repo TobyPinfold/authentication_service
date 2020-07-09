@@ -3,12 +3,12 @@ package dev.tobypinfold.authenticationservice.core.models.user
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json.{DefaultJsonProtocol, RootJsonFormat}
 
-final case class User(userId: String, username: String, password: String)
+final case class User(userId: Long, username: String, password: String)
 object User extends DefaultJsonProtocol with SprayJsonSupport {
   implicit val format: RootJsonFormat[User] = jsonFormat3(User.apply)
 }
 
-final case class UserProtected(userId: String, username: String)
+final case class UserProtected(userId: Long, username: String)
 object UserProtected extends DefaultJsonProtocol with SprayJsonSupport {
   implicit val format: RootJsonFormat[UserProtected] = jsonFormat2(UserProtected.apply)
 }

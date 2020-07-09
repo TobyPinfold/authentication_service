@@ -7,7 +7,7 @@ object MysqlDB {
   val connection: Database = Database.forConfig("db")
 
   def setup (database: Database): Future[Unit] = database.run(
-    DBIO.seq((Users.table.schema ++ Tokens.table.schema).create)
+    DBIO.seq((UsersTable.table.schema ++ TokensTable.table.schema).create)
   )
 
   def close(database: Database): Unit = database.close()

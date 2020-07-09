@@ -7,9 +7,9 @@ import dev.tobypinfold.authenticationservice.core.repository.MysqlUsersRepositor
 import scala.concurrent.Future
 
 trait UserDao {
-  def createUser() : Future[User]
+  def createUser(user: UserPass) : Future[Long]
 
-  def authenticateUser(user: UserPass) : Future[UserProtected]
+  def getUser(user: UserPass) : Future[User]
 
   def deleteUser(user: User) : Future[Boolean]
 }

@@ -1,9 +1,9 @@
-package dev.tobypinfold.authenticationservice.repository
-import slick.jdbc.MySQLProfile.api._
+package dev.tobypinfold.authenticationservice.datasources
 
 import scala.concurrent.Future
+import slick.jdbc.MySQLProfile.api._
 
-object DB {
+object MysqlDB {
   val connection: Database = Database.forConfig("db")
 
   def setup (database: Database): Future[Unit] = database.run(

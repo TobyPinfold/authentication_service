@@ -1,4 +1,4 @@
-package dev.tobypinfold.authenticationservice.repository
+package dev.tobypinfold.authenticationservice.datasources
 
 import slick.jdbc.MySQLProfile.api._
 import slick.lifted.{ForeignKeyQuery, ProvenShape}
